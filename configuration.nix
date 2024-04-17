@@ -4,6 +4,9 @@
 
 { config, pkgs, ... }:
 
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -80,6 +83,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable gesture support
+  services.touchegg.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.akash = {
     isNormalUser = true;
@@ -104,6 +110,10 @@
      kitty
      gnome.gnome-tweaks
      gnome.dconf-editor
+     # gnome extensions
+     unstable.gnomeExtensions.hide-top-bar
+     gnomeExtensions.unite
+     gnomeExtensions.x11-gestures
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

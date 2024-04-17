@@ -13,6 +13,7 @@
   environment.systemPackages = with pkgs; [
      asusctl
      supergfxctl
+     # gnome extensions
      gnomeExtensions.supergfxctl-gex
   ];
 }
