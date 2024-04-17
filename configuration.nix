@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Custom configs for my Asus laptop
+      ./asus.nix
     ];
 
   # Bootloader.
