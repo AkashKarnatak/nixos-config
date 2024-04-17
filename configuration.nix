@@ -116,6 +116,13 @@ in
      gnomeExtensions.x11-gestures
   ];
 
+  # Environment variables
+  environment.variables = {
+    EDITOR = "vim";
+    VISUAL = "vim";
+    MOZ_USE_XINPUT2 = "1";
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
