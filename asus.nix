@@ -1,9 +1,16 @@
 { config, pkgs, ... }:
 
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
   boot.kernelParams = [ "ibt=off" ];
 
   # Asus and Supergfxctl services
+  nixpkgs.overlays = [(final: prev: {
+    asusctl = unstable.asusctl;
+    supergfxctl = unstable.supergfxctl;
+  })];
   services.supergfxd.enable = true;
   services.asusd = {
     enable = true;
@@ -11,8 +18,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-     asusctl
-     supergfxctl
      # gnome extensions
      gnomeExtensions.supergfxctl-gex
   ];
