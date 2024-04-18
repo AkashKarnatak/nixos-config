@@ -114,6 +114,7 @@ in
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      git
+     file
      unzip
      gcc
      gnumake
@@ -129,6 +130,7 @@ in
      cachix
      neovim-nightly
      ripgrep
+     keepassxc
      # gnome extensions
      unstable.gnomeExtensions.hide-top-bar
      gnomeExtensions.unite
