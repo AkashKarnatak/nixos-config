@@ -125,7 +125,8 @@ in
      gcc
      gnumake
      nodejs_20
-     python3
+     python311Full
+     python311Packages.pip
      xclip
      kitty
      gnome.gnome-tweaks
@@ -136,6 +137,8 @@ in
      cachix
      neovim-nightly
      ripgrep
+     fd
+     fswatch
      keepassxc
      # gnome extensions
      unstable.gnomeExtensions.hide-top-bar
