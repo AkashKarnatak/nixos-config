@@ -4,8 +4,14 @@
 
 { config, pkgs, ... }:
 
+# $ sudo nix-channel --list
+# nixos https://nixos.org/channels/nixos-23.11
+# nixos-stable https://channels.nixos.org/nixos-22.11
+# nixos-unstable https://nixos.org/channels/nixos-unstable
+
 let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  stable = import <nixos-stable> { config = { allowUnfree = true; }; };
 in
 {
   imports =
@@ -172,6 +178,6 @@ in
   system.stateVersion = "23.11"; # Did you read the comment?
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (stable.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 }
