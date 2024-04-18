@@ -9,7 +9,6 @@ in
   # Asus and Supergfxctl services
   nixpkgs.overlays = [(final: prev: {
     asusctl = unstable.asusctl;
-    supergfxctl = unstable.supergfxctl;
   })];
   services.supergfxd.enable = true;
   services.asusd = {
