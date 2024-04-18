@@ -110,6 +110,9 @@ in
      kitty
      gnome.gnome-tweaks
      gnome.dconf-editor
+     rofi
+     pcmanfm
+     stow
      # gnome extensions
      unstable.gnomeExtensions.hide-top-bar
      gnomeExtensions.unite
