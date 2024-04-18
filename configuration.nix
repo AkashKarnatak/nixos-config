@@ -11,6 +11,8 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Use cachix
+      ./cachix.nix
       # Custom configs for my Asus laptop
       ./asus.nix
     ];
@@ -100,12 +102,23 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      git
+     unzip
+     gcc
+     gnumake
+     nodejs_20
+     python3
      xclip
      kitty
      gnome.gnome-tweaks
@@ -113,6 +126,9 @@ in
      rofi
      pcmanfm
      stow
+     cachix
+     neovim-nightly
+     ripgrep
      # gnome extensions
      unstable.gnomeExtensions.hide-top-bar
      gnomeExtensions.unite
@@ -121,8 +137,8 @@ in
 
   # Environment variables
   environment.variables = {
-    EDITOR = "vim";
-    VISUAL = "vim";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
     MOZ_USE_XINPUT2 = "1";
   };
 
