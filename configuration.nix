@@ -23,6 +23,8 @@ in
       ./asus.nix
       # Nvidia config
       ./nvidia.nix
+      # Powertop
+      ./powertop.nix
     ];
 
   # Bootloader.
