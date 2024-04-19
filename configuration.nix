@@ -149,6 +149,7 @@ in
      unstable.gnomeExtensions.hide-top-bar
      gnomeExtensions.unite
      gnomeExtensions.x11-gestures
+     gnomeExtensions.fullscreen-hot-corner
   ];
 
   # Environment variables
