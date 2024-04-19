@@ -141,6 +141,10 @@ in
      fd
      fswatch
      keepassxc
+     pciutils
+     killall
+     powertop
+     gnome.gnome-power-manager
      # gnome extensions
      unstable.gnomeExtensions.hide-top-bar
      gnomeExtensions.unite
