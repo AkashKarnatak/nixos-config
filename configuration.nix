@@ -21,6 +21,8 @@ in
       ./cachix.nix
       # Custom configs for my Asus laptop
       ./asus.nix
+      # Nvidia config
+      ./nvidia.nix
     ];
 
   # Bootloader.
@@ -143,7 +145,8 @@ in
      keepassxc
      pciutils
      killall
-     powertop
+     lshw
+     glxinfo
      gnome.gnome-power-manager
      # gnome extensions
      unstable.gnomeExtensions.hide-top-bar
