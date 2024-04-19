@@ -108,6 +108,7 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Neovim nightly overlay
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
@@ -182,5 +183,12 @@ in
 
   fonts.packages = with pkgs; [
     (stable.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
+
+  # Run non-nix executables
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
   ];
 }
