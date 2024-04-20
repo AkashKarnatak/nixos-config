@@ -12,7 +12,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-old, nixpkgs-unstable, ... }: {
-    # Please replace my-nixos with your hostname
+    # NOTE: Please replace nixos with your hostname
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
@@ -29,7 +29,7 @@
       modules = [
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
-        ./configuration.nix
+        ./nixos/configuration.nix
       ];
     };
   };
