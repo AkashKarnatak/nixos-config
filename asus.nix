@@ -1,14 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
-let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in
 {
   boot.kernelParams = [ "ibt=off" ];
 
   # Asus and Supergfxctl services
   nixpkgs.overlays = [(final: prev: {
-    asusctl = unstable.asusctl;
+    asusctl = pkgs-unstable.asusctl;
   })];
   services.supergfxd.enable = true;
   services.asusd = {

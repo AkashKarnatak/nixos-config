@@ -2,17 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-old, pkgs-unstable, neovim, ... }:
 
 # $ sudo nix-channel --list
 # nixos https://nixos.org/channels/nixos-23.11
 # nixos-stable https://channels.nixos.org/nixos-22.11
 # nixos-unstable https://nixos.org/channels/nixos-unstable
 
-let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-  stable = import <nixos-stable> { config = { allowUnfree = true; }; };
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -114,9 +110,7 @@ in
 
   # Neovim nightly overlay
   nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
+    neovim.overlay
   ];
 
   # List packages installed in system profile. To search, run:
@@ -151,7 +145,7 @@ in
      glxinfo
      gnome.gnome-power-manager
      # gnome extensions
-     unstable.gnomeExtensions.hide-top-bar
+     pkgs-unstable.gnomeExtensions.hide-top-bar
      gnomeExtensions.unite
      gnomeExtensions.x11-gestures
      gnomeExtensions.fullscreen-hot-corner
@@ -163,6 +157,9 @@ in
     VISUAL = "nvim";
     MOZ_USE_XINPUT2 = "1";
   };
+
+  # Enable nix flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -192,7 +189,7 @@ in
   system.stateVersion = "23.11"; # Did you read the comment?
 
   fonts.packages = with pkgs; [
-    (stable.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (pkgs-old.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   # Run non-nix executables
