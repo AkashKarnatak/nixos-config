@@ -145,7 +145,9 @@
      killall
      lshw
      glxinfo
+     desktop-file-utils
      gnome.gnome-power-manager
+     libreoffice
      # gnome extensions
      pkgs-unstable.gnomeExtensions.hide-top-bar
      gnomeExtensions.unite
