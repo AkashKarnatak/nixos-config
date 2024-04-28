@@ -154,6 +154,11 @@
      desktop-file-utils
      gnome.gnome-power-manager
      libreoffice
+     tigervnc
+     simplescreenrecorder
+     ffmpeg
+     libsForQt5.kdenlive
+     mpv
      # gnome extensions
      pkgs-unstable.gnomeExtensions.hide-top-bar
      gnomeExtensions.unite
